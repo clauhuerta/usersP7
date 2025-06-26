@@ -30,7 +30,7 @@ public class PDFGenerator {
 
             // Crear PDF
             Document doc = new Document(PageSize.A4);
-            PdfWriter.getInstance(doc, new FileOutputStream(outputPdf));
+            PdfWriter.getInstance(doc, new FileOutputStream("../" + outputPdf));
             doc.open();
 
             for (Usuario u : usuarios) {
