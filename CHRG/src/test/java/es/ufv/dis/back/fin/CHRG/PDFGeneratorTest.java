@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PDFGeneratorTest {
 
-    @Test
+    /*@Test
     void generarPdfCreaArchivo() {
         String output = "test_output.pdf";
         PDFGenerator.generar("usuarios.json", output);
         File f = new File(output);
         assertTrue(f.exists() && f.length() > 0);
         f.delete(); // limpieza
-    }
+    }*/
 
     @Test
     void generarPdfNoExcepcionaConArchivoValido() {

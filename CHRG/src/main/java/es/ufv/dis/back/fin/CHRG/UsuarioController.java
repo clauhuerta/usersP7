@@ -1,5 +1,6 @@
 package es.ufv.dis.back.fin.CHRG;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,16 @@ public class UsuarioController {
     }
 
     @GetMapping("/pdf")
-    public void generarPdf() {
-        PDFGenerator.generar("usuarios.json", "info.pdf");
+    public ResponseEntity<String> generarPdf() {
+        try {
+            PDFGenerator.generar(); // Sin parámetros
+            return ResponseEntity.ok("PDF generado correctamente.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Error al generar el PDF: " + e.getMessage());
+        }
     }
+
+
+
 }
