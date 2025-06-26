@@ -30,7 +30,16 @@ public class PDFGenerator {
 
             // Crear PDF
             Document doc = new Document(PageSize.A4);
-            PdfWriter.getInstance(doc, new FileOutputStream("../" + outputPdf));
+            // Obtener carpeta padre del directorio actual
+            File parentDir = new File(System.getProperty("user.dir")).getParentFile();
+
+            // Comprobar si es válida
+            if (parentDir == null) throw new IOException("No se pudo determinar el directorio raíz del proyecto");
+
+            // Crear el archivo PDF en la carpeta raíz
+            File outputFile = new File(parentDir, outputPdf);
+                        PdfWriter.getInstance(doc, new FileOutputStream(outputFile));
+
             doc.open();
 
             for (Usuario u : usuarios) {
